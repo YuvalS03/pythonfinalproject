@@ -3,7 +3,12 @@ import yfinance as yf
 import datetime
 import plotly
 import plotly.graph_objects as go
-import autots
+from autots import AutoTS
+import plotly.io as pio
+import os
+
+def crypto(crypto):
+    return str(crypto)
 
 from datetime import date, timedelta
 today = date.today()
@@ -14,7 +19,7 @@ second_date = date.today() - timedelta(days=730)
 second_date = second_date.strftime("%Y-%m-%d")
 start_date = second_date
 
-crypto_data = yf.download(tickers='ETH-USD', period = '22h', interval = '15m')
+crypto_data = yf.download(tickers= crypto("ETH") + '-USD', period = '22h', interval = '15m')
 crypto_data["Date"] = crypto_data.index
 crypto_data = crypto_data[["Date", "Open", "High", "Low", "Close", "Adj Close", "Volume"]]
 crypto_data.reset_index(drop=True, inplace=True)
@@ -28,7 +33,16 @@ figure = go.Figure(data=[go.Candlestick(x=crypto_data["Date"],
                                         close=crypto_data["Close"])])
 figure.update_layout(title = "Cryptocurrency Price",
                      xaxis_rangeslider_visible=True)
+
 figure.show()
+# model = AutoTS(forecast_length=30, frequency='infer', ensemble='simple')
+# model = model.fit(crypto_data, date_col='Date', value_col='Close', id_col=None)
+# prediction = model.predict()
+# forecast = prediction.forecast
+# print(forecast)
 
 # data = yf.download(tickers='BTC-USD', period = '22h', interval = '15m')
 # print(data)
+
+
+
