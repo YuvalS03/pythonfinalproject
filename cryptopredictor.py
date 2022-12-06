@@ -1,5 +1,6 @@
 import discord
 import asyncio
+import random
 import pandas as pd
 import yfinance as yf
 import datetime
@@ -27,50 +28,26 @@ async def on_message(message):
     if message.author == bot.user:
         return
     if message.content.startswith('/random'):
-        botmess = await message.channel.send(file=discord.File(r'C:\Users\ianth\Pictures\Screenshots\GreenWins.png'))
-        await asyncio.sleep(0.5)
+        randomnum = random.randint(0,4)
+        botmess = await message.channel.send(file=discord.File(r"C:\Users\ianth\Pictures\Saved Pictures\SpinningWheel.gif"))
+        await asyncio.sleep(5)
         await botmess.delete()
-        botmess2 = await message.channel.send(file=discord.File(r'C:\Users\ianth\Pictures\Screenshots\YellowWins.png'))
-        await asyncio.sleep(0.5)
-        await botmess2.delete()
-
-
-
-
-
-
-
-
-        """
-        botmess2 = await message.channel.send('poo')
-        botmess3 = await message.channel.send('poo')
-        botmess4 = await message.channel.send('poo')
-        botmess5 = await message.channel.send('poo')
-        await botmess1.edit(content="|  \               /   |")
-        await botmess2.edit(content="|      \ /\ /       |")
-        await botmess3.edit(content="|          0            |")
-        await botmess4.edit(content="|       /      \       |")
-        await botmess5.edit(content="|  /               \   |")
-
-        await botmess1.edit(content="|  \               /   |")
-        await botmess2.edit(content="|      \       /       |")
-        await botmess3.edit(content="|          0>         |")
-        await botmess4.edit(content="|       /      \       |")
-        await botmess5.edit(content="|  /               \   |")
-
-        await botmess1.edit(content="|  \               /   |")
-        await botmess2.edit(content="|      \      /        |")
-        await botmess3.edit(content="|          0            |")
-        await botmess4.edit(content="|      / \ / \      |")
-        await botmess5.edit(content="|  /               \   |")
-
-        await botmess1.edit(content="|  \               /   |")
-        await botmess2.edit(content="|      \       /       |")
-        await botmess3.edit(content="|        <0           |")
-        await botmess4.edit(content="|       /      \       |")
-        await botmess5.edit(content="|  /               \   |")
-
-"""
+        if(randomnum == 0):
+            await message.channel.send(file=discord.File(r"C:\Users\ianth\Pictures\Screenshots\GreenWins.png"))
+            await message.channel.send('DOGE')
+            return 'DOGE'
+        elif(randomnum == 1):
+            await message.channel.send(file=discord.File(r"C:\Users\ianth\Pictures\Screenshots\YellowWins.png"))
+            await message.channel.send('BNB')
+            return 'BNB'
+        elif(randomnum == 2):
+            await message.channel.send(file=discord.File(r"C:\Users\ianth\Pictures\Screenshots\RedWins.png"))
+            await message.channel.send('BTH')
+            return 'BTH'
+        else:
+            await message.channel.send(file=discord.File(r"C:\Users\ianth\Pictures\Screenshots\BlueWins.png"))
+            await message.channel.send('BTC')
+            return 'BTC'
 
 @bot.command(description="Sends the bot's latency.") # this decorator makes a slash command
 async def ping(ctx): # a slash command will be created with the name "ping"
@@ -84,6 +61,7 @@ async def poo(ctx): # a slash command will be created with the name "ping"
 async def poops(ctx): # a slash command will be created with the name "ping"
     await ctx.send("AHHH")
 
+"""
 @bot.command(description="crypto picker")
 async def pricegraph(ctx, crypto):
     today = date.today()
@@ -109,5 +87,5 @@ async def pricegraph(ctx, crypto):
                          xaxis_rangeslider_visible=True)
 
     figure.show()
-
+"""
 bot.run("MTA0MjIzNjM2ODE2NTgxNDMzMg.GR8DPe.35EGYyBHOFvHsyzK6ufqbVS-xLaQpJ1sQz5G8U")
