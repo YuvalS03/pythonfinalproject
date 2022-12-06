@@ -17,11 +17,10 @@ intents.message_content = True
 
 bot = discord.Bot(intents=intents)
 
+
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
-
-
 
 @bot.event
 async def on_message(message):
@@ -53,15 +52,12 @@ async def on_message(message):
 async def ping(ctx): # a slash command will be created with the name "ping"
     await ctx.respond(f"Pong! Latency is {bot.latency}")
 
-@bot.command(description="poops") # this decorator makes a slash command
-async def poo(ctx): # a slash command will be created with the name "ping"
-    await ctx.send("poopy")
 
 @bot.command(description="poops in agony") # this decorator makes a slash command
 async def poops(ctx): # a slash command will be created with the name "ping"
     await ctx.send("AHHH")
 
-"""
+
 @bot.command(description="crypto picker")
 async def pricegraph(ctx, crypto):
     today = date.today()
@@ -87,5 +83,5 @@ async def pricegraph(ctx, crypto):
                          xaxis_rangeslider_visible=True)
 
     figure.show()
-"""
+
 bot.run("MTA0MjIzNjM2ODE2NTgxNDMzMg.GR8DPe.35EGYyBHOFvHsyzK6ufqbVS-xLaQpJ1sQz5G8U")
