@@ -15,11 +15,11 @@ today = date.today()
 
 first_date = today.strftime("%Y-%m-%d")
 end_date = first_date
-second_date = date.today() - timedelta(days=730)
+second_date = date.today() - timedelta(days=1000)
 second_date = second_date.strftime("%Y-%m-%d")
 start_date = second_date
 
-crypto_data = yf.download(tickers= crypto("ETH") + '-USD', period = '22h', interval = '15m')
+crypto_data = yf.download(tickers= crypto("BTC") + '-USD', period = '18mo', interval = '5d')
 crypto_data["Date"] = crypto_data.index
 crypto_data = crypto_data[["Date", "Open", "High", "Low", "Close", "Adj Close", "Volume"]]
 crypto_data.reset_index(drop=True, inplace=True)
